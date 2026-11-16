@@ -1,0 +1,141 @@
+---
+import { Image } from 'astro:assets';
+import landscape from '../assets/tout-pousse.png';
+import portfolio from '../assets/portfolio.png';
+---
+
+<section
+  id="realisations"
+  class="section container portfolio-section"
+  aria-labelledby="portfolio-title"
+>
+  <div class="section-heading">
+    <h2 id="portfolio-title">
+      Un aperçu de
+      <br />
+      <em>mon univers.</em>
+    </h2>
+    <p>
+      Des idées aux supports : voici une première fenêtre sur ma façon de
+      travailler.
+    </p>
+  </div>
+  <div class="portfolio-grid">
+    <article class="project">
+      <a
+        href="#projet-tout-pousse"
+        class="project-image"
+        aria-label="Découvrir le projet fictif Tout pousse"
+      >
+        <Image
+          src={landscape}
+          alt="Présentation du projet fictif Tout pousse : identité de paysagiste, exemples de publications et méthode de communication"
+          width={1000}
+          format="webp"
+        />
+      </a>
+      <div class="project-heading">
+        <div>
+          <p class="project-type">Projet fictif · Stratégie & création</p>
+          <h3>
+            <a href="#projet-tout-pousse">Tout pousse</a>
+          </h3>
+        </div>
+        <a
+          class="circle-link"
+          href="#projet-tout-pousse"
+          aria-label="Détails de Tout pousse"
+        >
+          ↗
+        </a>
+      </div>
+      <p>
+        Imaginer une communication de proximité pour un paysagiste vendéen :
+        réseaux sociaux, contenus et événementiel.
+      </p>
+      <details id="projet-tout-pousse" class="project-details">
+        <summary>
+          Le projet en quelques mots <span aria-hidden="true">+</span>
+        </summary>
+        <p>
+          Cette étude de cas met en scène une entreprise fictive qui souhaite
+          gagner en visibilité. Elle propose une ligne éditoriale autour des
+          conseils, des coulisses et des avant/après, ainsi que des supports
+          pour une journée portes ouvertes. Les visuels sont des maquettes de
+          travail, sans résultats clients revendiqués.
+        </p>
+        <a
+          href={landscape.src}
+          target="_blank"
+          rel="noopener"
+          class="text-link"
+        >
+          Voir le visuel original{' '}
+          <span class="sr-only">dans un nouvel onglet</span> ↗
+        </a>
+      </details>
+    </article>
+    <article class="project">
+      <a
+        href="#projet-portfolio"
+        class="project-image project-image-pink"
+        aria-label="Découvrir le portfolio personnel d’Apolline"
+      >
+        <Image
+          src={portfolio}
+          alt="Couverture originale du portfolio d’Apolline, avec sa photo et le logo Com’ à la une"
+          width={1000}
+          format="webp"
+        />
+      </a>
+      <div class="project-heading">
+        <div>
+          <p class="project-type">Projet personnel · Identité & présentation</p>
+          <h3>
+            <a href="#projet-portfolio">Com’ à la une</a>
+          </h3>
+        </div>
+        <a
+          class="circle-link"
+          href="#projet-portfolio"
+          aria-label="Détails du portfolio Com’ à la une"
+        >
+          ↗
+        </a>
+      </div>
+      <p>
+        Un univers visuel personnel, de la couleur et une conviction : une
+        communication qui avance ensemble.
+      </p>
+      <details id="projet-portfolio" class="project-details">
+        <summary>
+          Le projet en quelques mots <span aria-hidden="true">+</span>
+        </summary>
+        <p>
+          Cette couverture de portfolio présente mon identité et les domaines
+          dans lesquels je souhaite vous accompagner. Le nom du site est Com’Apo
+          ; le logo Com’ à la une conserve sa place dans cet univers.
+        </p>
+        <a
+          href={portfolio.src}
+          target="_blank"
+          rel="noopener"
+          class="text-link"
+        >
+          Voir le visuel original{' '}
+          <span class="sr-only">dans un nouvel onglet</span> ↗
+        </a>
+      </details>
+    </article>
+  </div>
+</section>
+<script>
+  document
+    .querySelectorAll<HTMLAnchorElement>('a[href^="#projet-"]')
+    .forEach((link) => {
+      link.addEventListener('click', () => {
+        const details = document.querySelector<HTMLDetailsElement>(link.hash);
+        if (details) details.open = true;
+      });
+    });
+</script>

@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { sitePath } from '../lib/paths';
+const links = [
+  ['Services', 'services'],
+  ['Ma méthode', 'methode'],
+  ['Réalisations', 'realisations'],
+  ['À propos', 'a-propos'],
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href={sitePath()} class="brand" aria-label="Com’Apo, accueil">
+      <Image
+        src={logo}
+        width={150}
+        alt="Com’ à la une, le logo de Com’Apo"
+        format="webp"
+        loading="eager"
+      />
+    </a>
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="navigation"
+    >
+      Menu <span aria-hidden="true">☰</span>
+    </button>
+    <nav id="navigation" aria-label="Navigation principale">
+      {links.map(([label, id]) => (
+        <a href={`${sitePath()}#${id}`}>{label}</a>
+      ))}
+      <a href={`${sitePath()}#contact`} class="nav-contact">
+        Parlons de votre projet <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+  </div>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('#navigation');
+  const close = () => {
+    button?.setAttribute('aria-expanded', 'false');
+    navigation?.removeAttribute('data-open');
+  };
+  button?.addEventListener('click', () => {
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    navigation?.toggleAttribute('data-open', !isOpen);
+  });
+  navigation
+    ?.querySelectorAll('a')
+    .forEach((link) => link.addEventListener('click', close));
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.key === 'Escape' &&
+      button?.getAttribute('aria-expanded') === 'true'
+    ) {
+      close();
+      button.focus();
+    }
+  });
+  window.matchMedia('(min-width: 960px)').addEventListener('change', close);
+</script>

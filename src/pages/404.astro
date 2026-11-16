@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { sitePath } from '../lib/paths';
+---
+
+<Layout title="Page introuvable — Com’Apo">
+  <Header />
+  <main id="contenu" class="container prose not-found">
+    <p>Erreur 404</p>
+    <h1>
+      On s’est
+      <br />
+      <em>perdus de vue.</em>
+    </h1>
+    <p>
+      Cette page n’existe pas ou a changé d’adresse. Retrouvons-nous à
+      l’accueil.
+    </p>
+    <a class="button" href={sitePath()}>
+      Revenir à l’accueil ↗
+    </a>
+  </main>
+  <Footer />
+</Layout>

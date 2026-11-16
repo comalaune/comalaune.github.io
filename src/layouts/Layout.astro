@@ -1,0 +1,110 @@
+---
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import { getImage } from 'astro:assets';
+import logo from '../assets/logo.png';
+import portfolio from '../assets/portfolio.png';
+import { sitePath } from '../lib/paths';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Com'Apo — Une communication qui avance ensemble",
+  description = 'Community management, communication digitale et création de contenu avec Apolline Deau. Une communication à votre image, construite ensemble.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = await getImage({
+  src: portfolio,
+  width: 1200,
+  format: 'jpg',
+});
+const favicon = await getImage({ src: logo, width: 128, format: 'png' });
+const analyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID || '';
+const validAnalyticsId = /^G-[A-Z0-9]+$/.test(analyticsId) ? analyticsId : '';
+const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff8f2" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Com'Apo" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(socialImage.src, Astro.site)} />
+    <meta
+      property="og:image:alt"
+      content="Le portfolio de communication d’Apolline Deau"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    {verification && (
+      <meta name="google-site-verification" content={verification} />
+    )}
+    <title>{title}</title>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: "Com'Apo",
+        description,
+        url: new URL(sitePath(), Astro.site).href,
+        email: 'com.alaune1@gmail.com',
+        founder: { '@type': 'Person', name: 'Apolline Deau' },
+        knowsAbout: [
+          'Community management',
+          'Communication digitale',
+          'Création de contenu',
+          'Communication événementielle',
+          'Communication B2B',
+        ],
+      })}
+    />
+  </head>
+  <body data-analytics-id={validAnalyticsId}>
+    <a class="skip-link" href="#contenu">
+      Aller au contenu
+    </a>
+    <slot />
+    {validAnalyticsId && (
+      <aside
+        class="cookie-banner"
+        id="cookie-banner"
+        aria-label="Mesure d’audience"
+        hidden
+      >
+        <p>
+          Un petit coup de pouce pour comprendre ce qui vous plaît ? Avec votre
+          accord, Google Analytics mesure les visites.{' '}
+          <a href={sitePath('confidentialite/')}>En savoir plus</a>
+        </p>
+        <div>
+          <button
+            type="button"
+            class="button button-small"
+            data-consent="accepted"
+          >
+            Accepter
+          </button>
+          <button type="button" class="text-link" data-consent="rejected">
+            Refuser
+          </button>
+        </div>
+      </aside>
+    )}
+    <script>
+      import '../scripts/analytics';
+    </script>
+  </body>
+</html>

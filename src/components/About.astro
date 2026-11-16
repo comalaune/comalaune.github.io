@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/apolline.png';
+---
+
+<section
+  id="a-propos"
+  class="section container about-section"
+  aria-labelledby="about-title"
+>
+  <div class="about-portrait">
+    <Image
+      src={portrait}
+      alt="Portrait d’Apolline Deau"
+      width={460}
+      height={509}
+      format="webp"
+    />
+  </div>
+  <div class="about-copy">
+    <h2 id="about-title">
+      Enchantée,
+      <br />
+      moi c’est <em>Apolline.</em>
+    </h2>
+    <p>
+      Ce que j’aime dans la communication ? Faire se rencontrer les idées, les
+      personnes et les histoires.
+    </p>
+    <p>
+      Diplômée d’un <strong>BUT GEA</strong> à La Roche-sur-Yon, avec un double
+      diplôme en administration des affaires à l’
+      <strong>UQAR, au Canada</strong>, j’ai construit un parcours qui mêle
+      organisation, curiosité et créativité.
+    </p>
+    <p>
+      Mes expériences en communication chez <strong>VST</strong> et{' '}
+      <strong>Les Jeux de Maud</strong> m’ont permis de créer des supports, de
+      réaliser des vidéos et d’animer des réseaux sociaux. Aujourd’hui, je mets
+      cette énergie au service de vos projets.
+    </p>
+    <p class="about-signature">
+      À l’écoute, impliquée, et toujours partante pour apprendre.
+    </p>
+  </div>
+</section>

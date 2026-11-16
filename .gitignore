@@ -1,0 +1,36 @@
+# Dependencies and generated output
+node_modules/
+dist/
+.astro/
+.wrangler/
+.netlify/
+coverage/
+playwright-report/
+test-results/
+
+# Local credentials (only templates may be committed)
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+*.pem
+*.key
+
+# Original source documents and local planning/QA artifacts
+siteinternet/
+docs/superpowers/
+.superpowers/
+.work/
+tmp/
+output/
+*.log
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json

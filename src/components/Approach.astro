@@ -1,0 +1,51 @@
+---
+const steps = [
+  [
+    'Analyser',
+    'Votre demande, votre contexte et les objectifs que vous avez en tête.',
+  ],
+  [
+    'Comprendre',
+    'Votre histoire, vos valeurs et les personnes à qui vous vous adressez.',
+  ],
+  [
+    'Réfléchir',
+    'Une stratégie et des idées qui correspondent à votre réalité.',
+  ],
+  ['Créer', 'Des contenus et des supports qui donnent vie à votre message.'],
+  ['Valider', 'Des échanges, des ajustements et votre regard à chaque étape.'],
+  [
+    'Faire grandir',
+    'Observer les résultats et faire évoluer votre communication.',
+  ],
+];
+---
+
+<section id="methode" class="approach-section" aria-labelledby="method-title">
+  <div class="container">
+    <div class="approach-heading">
+      <div>
+        <h2 id="method-title">
+          Votre entreprise a une histoire.
+          <br />
+          <em>Je commence par la comprendre.</em>
+        </h2>
+      </div>
+      <p>
+        Ma valeur centrale, c’est l’<strong>ensemble</strong>. Construire avec
+        vous, écouter ce qui compte et avancer dans la même direction.
+      </p>
+    </div>
+    <ol class="method-steps">
+      {steps.map(([name, description], index) => (
+        <li>
+          <span class="step-number" aria-hidden="true">
+            0{index + 1}
+          </span>
+          <h3>{name}</h3>
+          <p>{description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { sitePath } from '../lib/paths';
+---
+
+<footer class="site-footer container">
+  <div class="footer-brand">
+    <a href={sitePath()} aria-label="Com’Apo, accueil">
+      <Image src={logo} width={105} alt="Com’ à la une" format="webp" />
+    </a>
+    <div>
+      <strong>Com’Apo</strong>
+      <span>La communication se construit ensemble.</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href={sitePath('confidentialite/')}>Confidentialité</a>
+    {import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID && (
+      <button id="cookie-preferences" type="button">
+        Gérer les cookies
+      </button>
+    )}
+    <a href={`${sitePath()}#contact`}>Me contacter ↗</a>
+    <span>© {new Date().getFullYear()} Com’Apo</span>
+  </div>
+</footer>

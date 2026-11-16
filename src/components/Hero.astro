@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import portrait from '../assets/apolline.png';
+import logo from '../assets/logo.png';
+---
+
+<section class="hero container" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <h1 id="hero-title">
+      Une communication
+      <br />
+      qui avance
+      <br />
+      <em>ensemble.</em>
+    </h1>
+    <p class="hero-description">
+      Je donne vie à vos idées et du sens à votre communication.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="button">
+        Parlons de votre projet <span aria-hidden="true">↗</span>
+      </a>
+      <a href="#realisations" class="text-link">
+        Voir mes réalisations <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+    <p class="hero-signature">
+      Apolline Deau <span aria-hidden="true">·</span> Communication & création
+      de contenu
+    </p>
+  </div>
+  <div class="hero-visual">
+    <div class="portrait-frame">
+      <Image
+        src={portrait}
+        alt="Apolline Deau, fondatrice de Com’Apo"
+        width={460}
+        height={509}
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-logo">
+      <Image
+        src={logo}
+        width={180}
+        alt="Com’ à la une"
+        format="webp"
+        loading="eager"
+      />
+    </div>
+    <span class="portrait-caption">Des idées, du lien, et vous.</span>
+  </div>
+</section>

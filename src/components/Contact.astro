@@ -1,0 +1,151 @@
+---
+import { services, contactEmail } from '../data/services';
+import { sitePath } from '../lib/paths';
+const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT || '';
+if (
+  endpoint &&
+  !(
+    endpoint.startsWith('https://') ||
+    (import.meta.env.DEV && endpoint.startsWith('http://localhost:'))
+  )
+)
+  throw new Error(
+    'PUBLIC_CONTACT_ENDPOINT must use HTTPS (localhost is allowed in development).',
+  );
+---
+
+<section id="contact" class="contact-section" aria-labelledby="contact-title">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <h2 id="contact-title">
+        Et si on faisait
+        <br />
+        <em>grandir</em> vos idées ?
+      </h2>
+      <p>
+        Chaque demande est unique.
+        <br />
+        Chaque devis aussi.
+      </p>
+      <p>
+        Racontez-moi votre projet, vos envies, ce qui compte pour vous. On
+        réfléchit à la suite ensemble.
+      </p>
+      <a class="contact-email" href={`mailto:${contactEmail}`}>
+        {contactEmail} <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <form
+      id="contact-form"
+      data-endpoint={endpoint}
+      aria-describedby="contact-mode contact-privacy"
+    >
+      <div class="form-row">
+        <div class="field">
+          <label for="name">
+            Votre nom <span aria-hidden="true">*</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            autocomplete="name"
+            required
+            minlength="2"
+            maxlength="100"
+            placeholder="Comment vous appelez-vous ?"
+          />
+        </div>
+        <div class="field">
+          <label for="email">
+            Votre e-mail <span aria-hidden="true">*</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            maxlength="254"
+            placeholder="vous@exemple.fr"
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label for="service">
+          Votre besoin <span aria-hidden="true">*</span>
+        </label>
+        <select name="service" id="service" required>
+          <option value="" disabled selected>
+            De quoi souhaitez-vous parler ?
+          </option>
+          {services.map((service) => (
+            <option value={service.id}>{service.name}</option>
+          ))}
+          <option value="a-definir">Un projet à définir ensemble</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="message">
+          Votre projet, en quelques mots <span aria-hidden="true">*</span>
+        </label>
+        <textarea
+          name="message"
+          id="message"
+          rows="5"
+          required
+          minlength="10"
+          maxlength="5000"
+          placeholder="Votre activité, vos idées, vos objectifs… Je vous écoute."
+        ></textarea>
+      </div>
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Ne pas remplir ce champ</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabindex="-1"
+          autocomplete="off"
+        />
+      </div>
+      <p class="form-privacy" id="contact-privacy">
+        Vos informations servent uniquement à répondre à votre demande.{' '}
+        <a href={sitePath('confidentialite/')}>Confidentialité</a>. Les champs
+        marqués d’un * sont obligatoires.
+      </p>
+      <button class="button" id="contact-submit" type="submit">
+        {endpoint ? 'Envoyer mon message' : 'Préparer mon e-mail'}{' '}
+        <span aria-hidden="true">↗</span>
+      </button>
+      <p class="form-mode" id="contact-mode">
+        {endpoint
+          ? 'Votre message sera envoyé directement à Apolline.'
+          : 'Ce formulaire prépare un message dans votre messagerie. Vous pourrez le relire avant de l’envoyer.'}
+      </p>
+      <p
+        id="form-status"
+        role="status"
+        aria-live="polite"
+        tabindex="-1"
+        hidden
+      ></p>
+      <a
+        id="fallback-email"
+        class="text-link"
+        href={`mailto:${contactEmail}`}
+        hidden
+      >
+        Ouvrir mon e-mail ↗
+      </a>
+      <noscript>
+        <p>
+          Vous pouvez contacter Apolline directement à{' '}
+          <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+        </p>
+      </noscript>
+    </form>
+  </div>
+</section>
+<script>
+  import '../scripts/contact';
+</script>
