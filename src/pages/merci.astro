@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { sitePath } from '../lib/paths';
+---
+
+<Layout title="Merci pour votre message — Com’Apo" noindex>
+  <Header />
+  <main id="contenu" class="container prose not-found">
+    <h1>
+      Merci pour
+      <br />
+      <em>votre message.</em>
+    </h1>
+    <p>
+      Votre demande a été transmise. Apolline prendra le temps de vous lire et
+      de revenir vers vous pour parler de votre projet.
+    </p>
+    <a class="button" href={sitePath()}>
+      Revenir à l’accueil ↗
+    </a>
+  </main>
+  <Footer />
+</Layout>

@@ -1,4 +1,0 @@
-# Copy to api/.dev.vars for local Worker development; never commit the real file.
-RESEND_API_KEY=
-RESEND_FROM="Com'Apo <onboarding@resend.dev>"
-ALLOWED_ORIGINS="http://localhost:4321"

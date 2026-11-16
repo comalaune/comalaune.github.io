@@ -1,17 +1,7 @@
 ---
 import { services, contactEmail } from '../data/services';
 import { sitePath } from '../lib/paths';
-const endpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT || '';
-if (
-  endpoint &&
-  !(
-    endpoint.startsWith('https://') ||
-    (import.meta.env.DEV && endpoint.startsWith('http://localhost:'))
-  )
-)
-  throw new Error(
-    'PUBLIC_CONTACT_ENDPOINT must use HTTPS (localhost is allowed in development).',
-  );
+const thankYouUrl = new URL(sitePath('merci/'), Astro.site).href;
 ---
 
 <section id="contact" class="contact-section" aria-labelledby="contact-title">
@@ -37,9 +27,17 @@ if (
     </div>
     <form
       id="contact-form"
-      data-endpoint={endpoint}
+      action={`https://formsubmit.co/${contactEmail}`}
+      method="POST"
       aria-describedby="contact-mode contact-privacy"
     >
+      <input
+        type="hidden"
+        name="_subject"
+        value="Un nouveau projet avec Com’Apo"
+      />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value={thankYouUrl} />
       <div class="form-row">
         <div class="field">
           <label for="name">
@@ -102,7 +100,7 @@ if (
         <label for="website">Ne pas remplir ce champ</label>
         <input
           id="website"
-          name="website"
+          name="_honey"
           type="text"
           tabindex="-1"
           autocomplete="off"
@@ -114,13 +112,10 @@ if (
         marqués d’un * sont obligatoires.
       </p>
       <button class="button" id="contact-submit" type="submit">
-        {endpoint ? 'Envoyer mon message' : 'Préparer mon e-mail'}{' '}
-        <span aria-hidden="true">↗</span>
+        Envoyer mon message <span aria-hidden="true">↗</span>
       </button>
       <p class="form-mode" id="contact-mode">
-        {endpoint
-          ? 'Votre message sera envoyé directement à Apolline.'
-          : 'Ce formulaire prépare un message dans votre messagerie. Vous pourrez le relire avant de l’envoyer.'}
+        Une vérification anti-spam peut vous être proposée avant l’envoi.
       </p>
       <p
         id="form-status"
@@ -129,14 +124,6 @@ if (
         tabindex="-1"
         hidden
       ></p>
-      <a
-        id="fallback-email"
-        class="text-link"
-        href={`mailto:${contactEmail}`}
-        hidden
-      >
-        Ouvrir mon e-mail ↗
-      </a>
       <noscript>
         <p>
           Vous pouvez contacter Apolline directement à{' '}

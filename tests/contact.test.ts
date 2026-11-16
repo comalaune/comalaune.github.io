@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { validateContact, createMailto } from '../src/lib/contact.ts';
+import { validateContact } from '../src/lib/contact.ts';
 
 const valid = {
   name: 'Élodie Martin',
@@ -38,20 +38,15 @@ test('includes a general inquiry option', () => {
   assert.equal(validateContact({ ...valid, service: 'a-definir' }).ok, true);
 });
 
-test('mailto uses only the fixed business recipient and correctly encodes the message', () => {
+test('preserves multiline project descriptions, accents and punctuation', () => {
+  const message =
+    'Mon projet & mes idées : été, photo + vidéo !\nUn second paragraphe pour présenter mon activité.';
   const result = validateContact({
     ...valid,
-    message: 'Mon projet & mes idées : été, photo + vidéo !',
+    message,
   });
   assert.equal(result.ok, true);
   if (!result.ok) return;
-  assert.doesNotMatch(createMailto(result.value), /\+/);
-  const url = new URL(createMailto(result.value));
-  assert.equal(url.pathname, 'com.alaune1@gmail.com');
-  assert.match(url.searchParams.get('subject')!, /Création de contenu/);
-  assert.match(
-    url.searchParams.get('body')!,
-    /Mon projet & mes idées : été, photo \+ vidéo !/,
-  );
-  assert.match(url.searchParams.get('body')!, /elodie@example.com/);
+  assert.equal(result.value.message, message);
+  assert.equal(result.value.email, valid.email);
 });

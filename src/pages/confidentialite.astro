@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { sitePath } from '../lib/paths';
-const directSending = Boolean(import.meta.env.PUBLIC_CONTACT_ENDPOINT);
 const analyticsEnabled = /^G-[A-Z0-9]+$/.test(
   import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID || '',
 );
@@ -35,21 +34,13 @@ const analyticsEnabled = /^G-[A-Z0-9]+$/.test(
       servent uniquement à étudier votre demande et à y répondre. Ils ne sont ni
       vendus ni utilisés pour vous inscrire à une liste de diffusion.
     </p>
-    {directSending ? (
-      <p>
-        L’envoi passe par une fonction hébergée chez Cloudflare et par le
-        service de messagerie Resend. Ces prestataires traitent les informations
-        nécessaires à l’acheminement et à la protection contre les abus. La
-        fonction ne conserve pas de copie dans une base de données ; le message
-        est reçu dans la boîte mail d’Apolline.
-      </p>
-    ) : (
-      <p>
-        Actuellement, le formulaire prépare un e-mail dans votre propre logiciel
-        de messagerie. Aucune donnée du formulaire n’est transmise à Com’Apo
-        tant que vous n’avez pas envoyé cet e-mail vous-même.
-      </p>
-    )}
+    <p>
+      L’envoi passe par FormSubmit, qui transmet votre demande à la boîte mail
+      d’Apolline. La vérification anti-spam proposée par ce service peut
+      utiliser Google reCAPTCHA. Les données du formulaire sont envoyées à
+      FormSubmit seulement lorsque vous choisissez « Envoyer mon message » ; ce
+      site ne les stocke pas dans une base de données.
+    </p>
     <p>
       Les échanges sont conservés pendant le temps nécessaire au traitement et
       au suivi de votre demande. Vous pouvez demander l’accès, la rectification
@@ -63,6 +54,10 @@ const analyticsEnabled = /^G-[A-Z0-9]+$/.test(
       hébergées avec le site.
     </p>
     <h2>Mesure d’audience et cookies</h2>
+    <p>
+      La vérification reCAPTCHA intervient sur la page de FormSubmit lors de
+      l’envoi, et ne se charge pas pendant la simple consultation de ce site.
+    </p>
     {analyticsEnabled ? (
       <p>
         Google Analytics est chargé uniquement si vous choisissez « Accepter ».

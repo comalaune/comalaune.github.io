@@ -1,4 +1,4 @@
-import { services, contactEmail } from '../data/services.ts';
+import { services } from '../data/services.ts';
 
 export interface ContactData {
   name: string;
@@ -54,12 +54,4 @@ export function serviceName(id: string): string {
     services.find((item) => item.id === id)?.name ??
     'Un projet à définir ensemble'
   );
-}
-
-export function createMailto(data: ContactData): string {
-  const params = new URLSearchParams({
-    subject: `Un projet avec Com'Apo — ${serviceName(data.service)}`,
-    body: `Bonjour Apolline,\n\n${data.message}\n\nMon besoin : ${serviceName(data.service)}\n${data.name}\n${data.email}`,
-  });
-  return `mailto:${contactEmail}?${params.toString().replace(/\+/g, '%20')}`;
 }
