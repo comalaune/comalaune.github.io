@@ -7,7 +7,7 @@ declare global {
 const analyticsId = document.body.dataset.analyticsId;
 const banner = document.querySelector<HTMLElement>('#cookie-banner');
 if (analyticsId && banner) {
-  const key = 'comapo-analytics-consent';
+  const key = 'comalaune-analytics-consent';
   const readConsent = () => {
     try {
       return localStorage.getItem(key);

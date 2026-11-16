@@ -13,7 +13,7 @@ interface Props {
   noindex?: boolean;
 }
 const {
-  title = "Com'Apo — Une communication qui avance ensemble",
+  title = 'Com’ à la une — Une communication qui avance ensemble',
   description = 'Community management, communication digitale et création de contenu avec Apolline Deau. Une communication à votre image, construite ensemble.',
   noindex = false,
 } = Astro.props;
@@ -41,7 +41,7 @@ const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
     <link rel="icon" type="image/png" href={favicon.src} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />
-    <meta property="og:site_name" content="Com'Apo" />
+    <meta property="og:site_name" content="Com’ à la une" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -60,7 +60,7 @@ const verification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
       set:html={JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'ProfessionalService',
-        name: "Com'Apo",
+        name: 'Com’ à la une',
         description,
         url: new URL(sitePath(), Astro.site).href,
         email: 'com.alaune1@gmail.com',

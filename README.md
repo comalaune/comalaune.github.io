@@ -1,23 +1,23 @@
-# Com'Apo
+# Com’ à la une
 
 Site vitrine d’Apolline Deau : community management, communication digitale, création de contenu, communication événementielle et B2B.
 
-**Site public : https://hugocarolin.github.io/ComApo.github.io/**
+**Adresse de publication : https://comalaune.github.io/**
 
-Le dépôt appartient à `hugocarolin` : l’adresse `comapo.github.io` ne correspond pas à ce site.
+Le dépôt de publication est `comalaune/comalaune.github.io`, sous l’organisation GitHub gratuite `comalaune`. Le site est servi directement à la racine.
 
-Astro et TypeScript, génération statique pour GitHub Pages. Le site s’appelle **Com’Apo** et conserve le logo fourni **Com’ à la une**. Les visuels et les photos proviennent des documents fournis. Le portrait d’accueil est détouré et amélioré à partir de la photo originale, qui reste conservée pour la section de présentation.
+Astro et TypeScript, génération statique pour GitHub Pages. Le site porte le nom **Com’ à la une** et conserve le logo fourni. Les visuels et les photos proviennent des documents fournis. Le portrait d’accueil est détouré et amélioré à partir de la photo originale, qui reste conservée pour la section de présentation.
 
 ## Développement
 
-Node.js 24 est nécessaire.
+Node.js 24 ou version supérieure.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Adresse locale : `http://localhost:4321/ComApo.github.io/`.
+Adresse locale : `http://localhost:4321/`.
 
 ```sh
 npm test             # Validation du contact, sans envoyer de mail
@@ -35,9 +35,9 @@ Le workflow **Publish website** vérifie et publie `main` sur GitHub Pages. Dans
 
 Destinataire : **com.alaune1@gmail.com**.
 
-Le formulaire HTML utilise directement FormSubmit, avec un honeypot et la vérification reCAPTCHA du service. Après l’envoi, le visiteur revient sur une page de remerciement du site. Aucun serveur ni aucune clé API ne sont requis.
+Le formulaire HTML utilise directement FormSubmit, avec un honeypot et la vérification reCAPTCHA du service. Après l’envoi, le visiteur revient sur `https://comalaune.github.io/merci/`. Aucun serveur ni aucune clé API ne sont requis.
 
-**Activation nécessaire :** le premier envoi déclenche un e-mail de confirmation à l’adresse destinataire. La personne qui a accès à cette boîte doit cliquer sur le lien d’activation. Un envoi et une réception réels restent à vérifier après cette étape.
+**Activation :** FormSubmit demande de confirmer l’adresse destinataire par e-mail lors du premier envoi. La personne qui a accès à cette boîte doit cliquer sur le lien d’activation. Vérifier l’activation pour cette adresse de site, puis la réception d’un envoi réel.
 
 Le [guide de déploiement](docs/deployment.md) détaille l’activation, Analytics/Search Console et le futur nom de domaine.
 

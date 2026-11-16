@@ -29,7 +29,7 @@ if (form) {
       ).value = result.value[name];
     }
     (form.elements.namedItem('_subject') as HTMLInputElement).value =
-      `Un projet avec Com'Apo — ${serviceName(result.value.service)}`;
+      `Un projet avec Com’ à la une — ${serviceName(result.value.service)}`;
     status.hidden = true;
   });
 }
