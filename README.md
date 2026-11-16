@@ -6,7 +6,7 @@ Site vitrine d’Apolline Deau : community management, communication digitale, c
 
 Le dépôt de publication est `comalaune/comalaune.github.io`, sous l’organisation GitHub gratuite `comalaune`. Le site est servi directement à la racine.
 
-Astro et TypeScript, génération statique pour GitHub Pages. Le site porte le nom **Com’ à la une** et conserve le logo fourni. Les visuels et les photos proviennent des documents fournis. Le portrait d’accueil est détouré et amélioré à partir de la photo originale, qui reste conservée pour la section de présentation.
+Astro et TypeScript, génération statique pour GitHub Pages. Le site porte le nom **Com’ à la une** et conserve le logo fourni. Les visuels et les photos proviennent des documents fournis. Le portrait utilisé sur le site est détouré et amélioré à partir de la photo originale, conservée dans les sources.
 
 ## Développement
 

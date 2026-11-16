@@ -506,8 +506,6 @@ p + p {
 }
 .about-portrait {
   max-width: 360px;
-  border-radius: 160px 160px 10px 10px;
-  overflow: hidden;
 }
 .about-copy h2 {
   margin-bottom: 28px;
