@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import portrait from '../assets/apolline.png';
+import portrait from '../assets/apolline-cutout.png';
 import logo from '../assets/logo.png';
 ---
 
@@ -35,7 +35,8 @@ import logo from '../assets/logo.png';
         src={portrait}
         alt="Apolline Deau, fondatrice de Com’Apo"
         width={460}
-        height={509}
+        densities={[1, 2]}
+        quality={90}
         format="webp"
         loading="eager"
         fetchpriority="high"
