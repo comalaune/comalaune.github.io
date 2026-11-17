@@ -5,14 +5,19 @@ import { sitePath } from '../lib/paths';
 ---
 
 <footer class="site-footer container">
-  <div class="footer-brand">
-    <a href={sitePath()} aria-label="Com’ à la une, accueil">
-      <Image src={logo} width={105} alt="Com’ à la une" format="webp" />
-    </a>
-    <div>
-      <strong>Com’ à la une</strong>
-      <span>La communication se construit ensemble.</span>
+  <div class="footer-identity">
+    <div class="footer-brand">
+      <a href={sitePath()} aria-label="Com’ à la une, accueil">
+        <Image src={logo} width={105} alt="Com’ à la une" format="webp" />
+      </a>
+      <div>
+        <strong>Com’ à la une</strong>
+        <span>La communication se construit ensemble.</span>
+      </div>
     </div>
+    <p class="footer-credit">
+      Site réalisé par <a href="https://preskater.com/">Preskater</a>
+    </p>
   </div>
   <div class="footer-links">
     <a href={sitePath('confidentialite/')}>Confidentialité</a>
@@ -23,8 +28,5 @@ import { sitePath } from '../lib/paths';
     )}
     <a href={`${sitePath()}#contact`}>Me contacter</a>
     <span>© {new Date().getFullYear()} Com’ à la une</span>
-    <p class="footer-credit">
-      Site réalisé par <a href="https://preskater.com/">Preskater</a>
-    </p>
   </div>
 </footer>

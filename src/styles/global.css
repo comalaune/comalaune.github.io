@@ -617,8 +617,9 @@ p + p {
   color: var(--muted);
 }
 .footer-credit {
-  flex-basis: 100%;
-  text-align: right;
+  margin-top: 12px;
+  font-size: 15px;
+  text-align: left;
   color: var(--muted);
 }
 .footer-credit a {
@@ -841,8 +842,7 @@ p + p {
   .footer-links {
     justify-content: flex-start;
   }
-  .footer-links > span,
-  .footer-credit {
+  .footer-links > span {
     text-align: left;
   }
 }
@@ -1104,8 +1104,10 @@ p + p {
     flex-basis: 100%;
     margin-top: 8px;
   }
-  .footer-credit {
-    text-align: left;
+  .footer-credit a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
   .cookie-banner {
     left: 12px;
