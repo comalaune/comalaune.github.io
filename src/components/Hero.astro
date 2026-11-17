@@ -1,17 +1,36 @@
 ---
 import { Image } from 'astro:assets';
-import portrait from '../assets/apolline-cutout.png';
+import portrait from '../assets/apolline-portfolio-cutout.png';
 import logo from '../assets/logo.png';
 ---
 
 <section class="hero container" aria-labelledby="hero-title">
+  <div class="hero-visual">
+    <div class="hero-logo">
+      <Image
+        src={logo}
+        width={600}
+        alt="Com’ à la une"
+        format="webp"
+        loading="eager"
+      />
+    </div>
+    <div class="portrait-frame">
+      <Image
+        src={portrait}
+        alt="Apolline Deau, fondatrice de Com’ à la une"
+        width={420}
+        densities={[1, 2]}
+        quality={90}
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+  </div>
   <div class="hero-copy">
     <h1 id="hero-title">
-      Une communication
-      <br />
-      qui avance
-      <br />
-      <em>ensemble.</em>
+      Une communication qui avance <em>ensemble.</em>
     </h1>
     <p class="hero-description">
       Je donne vie à vos idées et du sens à votre communication.
@@ -28,29 +47,5 @@ import logo from '../assets/logo.png';
       Apolline Deau <span aria-hidden="true">·</span> Communication & création
       de contenu
     </p>
-  </div>
-  <div class="hero-visual">
-    <div class="portrait-frame">
-      <Image
-        src={portrait}
-        alt="Apolline Deau, fondatrice de Com’ à la une"
-        width={460}
-        densities={[1, 2]}
-        quality={90}
-        format="webp"
-        loading="eager"
-        fetchpriority="high"
-      />
-    </div>
-    <div class="hero-logo">
-      <Image
-        src={logo}
-        width={180}
-        alt="Com’ à la une"
-        format="webp"
-        loading="eager"
-      />
-    </div>
-    <span class="portrait-caption">Des idées, du lien, et vous.</span>
   </div>
 </section>

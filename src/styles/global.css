@@ -55,10 +55,10 @@ p {
 }
 h1,
 h2 {
-  font-family: var(--serif);
-  font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 1.07;
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
 }
 h1 {
   font-size: clamp(3.3rem, 5.7vw, 5.5rem);
@@ -71,8 +71,9 @@ h3 {
   letter-spacing: -0.025em;
 }
 em {
-  color: var(--red);
-  font-weight: 450;
+  color: var(--accent);
+  font-style: normal;
+  font-weight: inherit;
 }
 p + p {
   margin-top: 1em;
@@ -100,11 +101,11 @@ p + p {
   align-items: center;
   justify-content: center;
   gap: 30px;
-  border: 1px solid var(--red);
+  border: 1px solid var(--green-ink);
   border-radius: 6px;
   padding: 15px 22px;
   color: white;
-  background: var(--red);
+  background: var(--green-ink);
   font-weight: 650;
   text-decoration: none;
   transition:
@@ -113,8 +114,8 @@ p + p {
   line-height: 1.5;
 }
 .button:hover {
-  background: var(--red-dark);
-  border-color: var(--red-dark);
+  background: var(--green-dark);
+  border-color: var(--green-dark);
   transform: translateY(-2px);
 }
 .button:disabled {
@@ -133,7 +134,7 @@ p + p {
   border: 0;
 }
 .text-link:hover {
-  color: var(--red);
+  color: var(--accent);
 }
 .skip-link {
   position: fixed;
@@ -193,40 +194,45 @@ p + p {
   white-space: nowrap;
 }
 #navigation a:hover {
-  color: var(--red);
+  color: var(--accent);
 }
 #navigation .nav-contact {
   margin-left: auto;
   padding-block: 7px;
   border-bottom: 1px solid currentColor;
-  color: var(--red);
+  color: var(--accent);
 }
 .menu-toggle {
   display: none;
 }
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  align-items: center;
-  gap: 55px;
-  padding-block: 65px 75px;
+  gap: 24px;
+  padding-block: 30px 60px;
+  text-align: center;
+}
+.hero-copy {
+  min-width: 0;
 }
 .hero h1 {
-  max-width: 670px;
+  max-width: 1050px;
+  margin-inline: auto;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  text-transform: uppercase;
 }
 .hero h1 em {
-  display: inline-block;
+  color: inherit;
 }
 .hero-description {
   font-size: 18px;
-  max-width: 400px;
-  margin-top: 26px;
+  margin-top: 14px;
 }
 .hero-actions {
   display: flex;
+  justify-content: center;
   gap: 27px;
   flex-wrap: wrap;
-  margin-top: 32px;
+  margin-top: 24px;
   align-items: center;
 }
 .hero-actions .button {
@@ -234,26 +240,33 @@ p + p {
   gap: 17px;
 }
 .hero-actions .text-link {
-  font-size: 13px;
+  font-size: 14px;
 }
 .hero-signature {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
-  margin-top: 40px;
+  margin-top: 18px;
   display: flex;
+  justify-content: center;
   gap: 10px;
   align-items: center;
 }
 .hero-visual {
-  position: relative;
-  padding: 0 15px 25px 0;
-  max-width: 475px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: clamp(12px, 3vw, 45px);
+  align-items: center;
+  width: min(940px, 100%);
+  height: clamp(260px, 28vw, 360px);
+  margin-inline: auto;
+}
+.hero-logo {
   width: 100%;
-  justify-self: end;
 }
 .portrait-frame {
-  background: transparent;
-  aspect-ratio: 460/520;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
 }
 .portrait-frame img {
   width: 100%;
@@ -261,82 +274,21 @@ p + p {
   object-fit: contain;
   object-position: center bottom;
 }
-.hero-logo {
-  position: absolute;
-  width: 175px;
-  right: -24px;
-  bottom: 6px;
-  padding: 12px;
-  background: var(--cream);
-  transform: rotate(-9deg);
-  border-radius: 50%;
-}
-.portrait-caption {
-  position: absolute;
-  left: 6px;
-  bottom: -4px;
-  color: var(--muted);
-  font-size: 12px;
-}
 .services-section {
   border-top: 1px solid var(--line);
+}
+.section-intro {
   display: grid;
-  grid-template-columns: 0.8fr 1.5fr;
-  gap: 90px;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
 }
 .section-intro p {
-  margin-top: 25px;
-  max-width: 310px;
+  max-width: 400px;
 }
 .section-intro .text-link {
-  margin-top: 28px;
-  font-size: 13px;
-}
-.service-row {
-  display: grid;
-  grid-template-columns: 48px 1fr 24px;
-  gap: 22px;
-  padding: 27px 0;
-  text-decoration: none;
-  border-top: 1px solid var(--line);
-}
-.service-row:first-child {
-  padding-top: 5px;
-  border: 0;
-}
-.service-row:last-child {
-  padding-bottom: 0;
-}
-.service-number {
-  font: italic 450 38px/1 var(--serif);
-  color: var(--pink-dark);
-  letter-spacing: -0.04em;
-}
-.service-row h3 {
-  font-size: 20px;
-  margin-bottom: 9px;
-}
-.service-row p {
+  margin-top: 18px;
   font-size: 14px;
-  line-height: 1.7;
-  max-width: 520px;
-}
-.service-detail {
-  display: block;
-  margin-top: 11px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 0.01em;
-}
-.service-arrow {
-  font-size: 25px;
-  transition: transform 200ms ease;
-}
-.service-row:hover .service-arrow {
-  transform: translate(3px, -3px);
-}
-.service-row:hover h3 {
-  color: var(--red);
 }
 .approach-section {
   background: var(--sage);
@@ -382,14 +334,14 @@ p + p {
 }
 .step-number {
   display: block;
-  font: italic 450 56px/1 var(--serif);
+  font: 650 56px/1 var(--display);
   letter-spacing: -0.05em;
   margin-bottom: 17px;
 }
 .method-steps h3 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 23px;
-  font-weight: 550;
+  font-weight: 700;
   margin-bottom: 12px;
 }
 .method-steps p {
@@ -431,7 +383,7 @@ p + p {
 .project-image img {
   width: 100%;
   height: auto;
-  box-shadow: 0 10px 24px #40252d0a;
+  box-shadow: 0 10px 24px #344c410a;
 }
 .project-heading {
   display: flex;
@@ -514,8 +466,8 @@ p + p {
   font-size: 15px;
 }
 .about-signature {
-  font: italic 450 22px/1.5 var(--serif) !important;
-  color: var(--red);
+  font: 650 20px/1.5 var(--sans) !important;
+  color: var(--accent);
   margin-top: 25px;
 }
 .contact-section {
@@ -529,6 +481,7 @@ p + p {
 }
 .contact-copy h2 {
   margin-bottom: 28px;
+  word-spacing: 0.06em;
 }
 .contact-copy > p {
   font-size: 15px;
@@ -561,7 +514,7 @@ p + p {
 .field select,
 .field textarea {
   width: 100%;
-  border: 1px solid #40252d60;
+  border: 1px solid #344c4160;
   color: var(--ink);
   background: var(--cream);
   padding: 12px 14px;
@@ -640,7 +593,7 @@ p + p {
 }
 .footer-brand strong {
   display: block;
-  font: 500 26px/1.3 var(--serif);
+  font: 700 26px/1.3 var(--display);
   letter-spacing: -0.04em;
 }
 .footer-brand span {
@@ -666,6 +619,14 @@ p + p {
   text-align: right;
   color: var(--muted);
 }
+.footer-credit {
+  flex-basis: 100%;
+  text-align: right;
+  color: var(--muted);
+}
+.footer-credit a {
+  font-weight: 750;
+}
 .cookie-banner {
   position: fixed;
   bottom: 20px;
@@ -674,7 +635,7 @@ p + p {
   z-index: 20;
   background: var(--cream);
   border: 1px solid var(--ink);
-  box-shadow: 0 10px 60px #40252d30;
+  box-shadow: 0 10px 60px #344c4130;
   padding: 22px;
   display: flex;
   align-items: center;
@@ -725,22 +686,12 @@ p + p {
 
 @media (min-width: 1600px) {
   .hero {
-    padding-block: 80px 95px;
+    padding-block: 40px 70px;
   }
 }
 @media (max-width: 1199px) {
   .container {
     width: calc(100% - 80px);
-  }
-  .hero {
-    gap: 35px;
-  }
-  .hero-logo {
-    right: -15px;
-    width: 145px;
-  }
-  .services-section {
-    gap: 55px;
   }
   .about-section {
     gap: 60px;
@@ -798,7 +749,7 @@ p + p {
     padding: 25px 28px 35px;
     background: var(--cream);
     border-bottom: 1px solid var(--line);
-    box-shadow: 0 20px 20px #40252d08;
+    box-shadow: 0 20px 20px #344c4108;
   }
   #navigation[data-open] {
     display: flex;
@@ -816,8 +767,7 @@ p + p {
     width: fit-content;
   }
   .hero {
-    gap: 25px;
-    padding-block: 50px 65px;
+    padding-block: 28px 50px;
   }
   h1 {
     font-size: clamp(3.1rem, 6.2vw, 4.4rem);
@@ -826,38 +776,16 @@ p + p {
     gap: 15px;
   }
   .hero-signature {
-    display: block;
-    max-width: 230px;
+    flex-wrap: wrap;
   }
   .hero-signature span {
     margin-inline: 5px;
   }
-  .hero-logo {
-    width: 125px;
-    right: -9px;
-  }
   .section {
     padding-block: 75px;
   }
-  .services-section {
-    grid-template-columns: 0.8fr 1.2fr;
+  .section-intro {
     gap: 40px;
-  }
-  .service-row {
-    grid-template-columns: 34px 1fr 18px;
-    gap: 14px;
-  }
-  .service-row h3 {
-    font-size: 18px;
-  }
-  .service-number {
-    font-size: 30px;
-  }
-  .service-row p {
-    font-size: 14px;
-  }
-  .service-detail {
-    font-size: 11px;
   }
   .approach-section {
     padding-block: 65px;
@@ -942,9 +870,8 @@ p + p {
     font-size: clamp(2rem, 9vw, 3rem);
   }
   .hero {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding-block: 28px 40px;
+    gap: 20px;
+    padding-block: 22px 40px;
   }
   .hero-copy,
   .contact-copy,
@@ -953,14 +880,16 @@ p + p {
   }
   .hero h1 {
     max-width: 500px;
+    font-size: clamp(1.6rem, 7.7vw, 2.4rem);
   }
   .hero-description {
-    font-size: 16px;
+    font-size: 15px;
     max-width: 360px;
-    margin-top: 20px;
+    margin: 14px auto 0;
   }
   .hero-actions {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     justify-items: center;
     gap: 8px;
     margin-top: 24px;
@@ -978,59 +907,27 @@ p + p {
     display: block;
     max-width: none;
     margin-top: 16px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .hero-visual {
-    width: 70%;
-    max-width: 240px;
-    padding: 0 0 24px;
-    justify-self: center;
-  }
-  .portrait-frame {
-    aspect-ratio: 460/520;
-  }
-  .portrait-frame img {
-    object-position: center bottom;
-  }
-  .hero-logo {
-    display: none;
-  }
-  .portrait-caption {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    text-align: center;
-    font-size: 11px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 8px;
+    height: clamp(170px, 44vw, 230px);
   }
   .section {
     padding-block: 52px;
   }
-  .services-section {
+  .section-intro {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 20px;
   }
   .section-intro p {
     font-size: 14px;
     max-width: 330px;
-    margin-top: 20px;
   }
   .section-intro .text-link {
     min-height: 44px;
     margin-top: 12px;
-  }
-  .service-row {
-    padding-block: 24px;
-    gap: 12px;
-    grid-template-columns: 26px minmax(0, 1fr) 20px;
-  }
-  .service-row h3 {
-    font-size: 18px;
-  }
-  .service-row p {
-    font-size: 14px;
-  }
-  .service-detail {
-    font-size: 11px;
   }
   .approach-section {
     padding-block: 50px;
@@ -1201,6 +1098,9 @@ p + p {
     text-align: left;
     flex-basis: 100%;
     margin-top: 8px;
+  }
+  .footer-credit {
+    text-align: left;
   }
   .cookie-banner {
     left: 12px;

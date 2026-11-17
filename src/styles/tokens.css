@@ -1,14 +1,14 @@
 :root {
-  --cream: #fff8f2;
-  --ink: #40252d;
-  --red: #bc3829;
-  --red-dark: #9d2b20;
-  --rose: #f6c5d5;
-  --pink-dark: #af4166;
-  --sage: #adbfaa;
-  --green-ink: #203c31;
-  --muted: #75636a;
-  --line: #40252d35;
-  --sans: 'Manrope Variable', sans-serif;
-  --serif: 'Fraunces Variable', Georgia, serif;
+  --cream: #fff5ec;
+  --ink: #344c41;
+  --accent: #aa354e;
+  --pink: #ef7c8e;
+  --rose: #f5c8de;
+  --sage: #a3bba3;
+  --green-ink: #2e493e;
+  --green-dark: #20392e;
+  --muted: #616d69;
+  --line: #344c4135;
+  --sans: 'Nunito Variable', sans-serif;
+  --display: 'League Spartan Variable', sans-serif;
 }

@@ -3,14 +3,6 @@ import { validateContact, serviceName } from '../lib/contact';
 const form = document.querySelector<HTMLFormElement>('#contact-form');
 if (form) {
   const status = form.querySelector<HTMLElement>('#form-status')!;
-  document
-    .querySelectorAll<HTMLAnchorElement>('[data-service]')
-    .forEach((link) => {
-      link.addEventListener('click', () => {
-        const select = form.elements.namedItem('service') as HTMLSelectElement;
-        select.value = link.dataset.service || '';
-      });
-    });
   form.addEventListener('submit', (event) => {
     const fields = Object.fromEntries(new FormData(form));
     const result = validateContact(fields);

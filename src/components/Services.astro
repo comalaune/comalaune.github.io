@@ -1,7 +1,3 @@
----
-import { services } from '../data/services';
----
-
 <section
   id="services"
   class="section container services-section"
@@ -13,29 +9,14 @@ import { services } from '../data/services';
       <br />
       Mes <em>savoir-faire.</em>
     </h2>
-    <p>
-      Un accompagnement sur mesure pour faire rayonner votre activité, à votre
-      façon.
-    </p>
-    <a href="#contact" class="text-link">
-      Trouvons ce qu’il vous faut <span aria-hidden="true">↗</span>
-    </a>
-  </div>
-  <div class="service-list">
-    {services.map((service, index) => (
-      <a class="service-row" href={`#contact`} data-service={service.id}>
-        <span class="service-number" aria-hidden="true">
-          0{index + 1}
-        </span>
-        <div>
-          <h3>{service.name}</h3>
-          <p>{service.description}</p>
-          <span class="service-detail">{service.detail}</span>
-        </div>
-        <span class="service-arrow" aria-hidden="true">
-          ↗
-        </span>
+    <div class="service-summary">
+      <p>
+        Un accompagnement sur mesure pour faire rayonner votre activité, à votre
+        façon.
+      </p>
+      <a href="#contact" class="text-link">
+        Trouvons ce qu’il vous faut <span aria-hidden="true">↗</span>
       </a>
-    ))}
+    </div>
   </div>
 </section>
